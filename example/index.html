@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры на jQuery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="content">
+        <div class="form">
+            <h1 class="form__title">Работаем с формами</h1>
+            <form class="form__wrap" action="#">
+                <div class="form__element form__checkbox">
+                    <label><input name="fruit" type="checkbox" value="apple" checked>Яблоко</label>
+                    <label><input name="fruit" type="checkbox" value="orange">Апельсин</label>
+                </div>
+                <div class="form__radio form__element">
+                    <label><input name="sex" type="radio" value="male" checked>Male</label>
+                    <label><input name="sex" type="radio" value="female">Female</label>
+                </div>
+                <input class="form__element" type="text" name="firstname" placeholder="Введите имя" />
+                <input class="form__element" type="text" name="lastname" placeholder="Введите фамилию" />
+                <input class="form__element form__element--submit" type="submit" />
+            </form>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $('li').on('click', function(evt) {
+            console.log(evt.screenX, evt.screenY)
+        })
+    </script>
+    <script src="js/common.js"></script>
+</body>
+</html>
