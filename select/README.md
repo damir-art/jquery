@@ -21,6 +21,13 @@
 
 **Object** - это `объект jQuery`, который может рабоать с API jQuery.
 
+    jQuery(document).ready(function($) {
+      let li = $('li');
+      let liJS = document.querySelectorAll('li');
+      console.log(li);   // <prototype>: Object { jquery:
+      console.log(liJS); // <prototype>: NodeListPrototype
+    });
+
 ## Разное
 - `$(selector).length` - получаем количество элементов
 - `$(selector)[0]` - обращаемся к элементу по его индексу

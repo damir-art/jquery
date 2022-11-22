@@ -11,6 +11,6 @@
     selector selector   // потомок
     selector > selector // дочерний
     selector + selector // соседний
-    selector, selector
+    selector, selector  // несколько
 
     и т.д
