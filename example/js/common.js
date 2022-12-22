@@ -1,4 +1,5 @@
 jQuery(document).ready( function ($) {
-  let all = $('h1').text('Hello')
-  console.log(all)
-});
+  $('li').not('.active').css('backgroundColor', 'red')
+  $('li').css('marginBottom', '8px')
+  $('li').has('ul').css('backgroundColor', 'green')
+})
