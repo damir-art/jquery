@@ -82,13 +82,13 @@ insertBefore(element) - вставляет элемент, перед элеме
     $('li').replaceAll('p')
 
 ## clone()
-clone() - клонируем элементы и их события.
+clone() - клонирует элементы и их события.
 
     const menu = $('.menu').clone()
     $('.footer').after(menu) // вставляем склонированный элемент
 
 ## remove()
-remove() - навсегда удаляем элемент из DOM.
+remove() - удаляет элемент из DOM.
 
     $('.menu').remove()
     const menu = $('.menu').remove() // перед удалением элемент может быть записан в переменную
