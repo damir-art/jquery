@@ -4,6 +4,10 @@
     $('div').on('click', function() {})
     $('div').off('click', function() {})
 
+    $('div').on('click', function() {
+      let el = $(this)
+    })
+
 Схема `on`:
 
     on(event, [data], handler)
