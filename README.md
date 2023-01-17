@@ -1,16 +1,26 @@
 # jQuery
-Руководство по jQuery.  
+Руководство по jQuery.
+
 jQuery - библиотека упрощающая работу с DOM-элементами HTML-страницы, событиями, анимацией, AJAX.  
 Девиз jQuery - `пиши меньше, делай больше`.
 
 https://jquery.com/ - официальный сайт  
+https://learn.jquery.com/ - учебник  
+https://jquery.com/upgrade-guide/ - обновления учебника  
 https://api.jquery.com/ - API методов  
 https://jqueryui.com/ - UI  
 https://plugins.jquery.com/ - плагины
 
-Если используете CDN, то используйте Google.
-
 ## Оглавление
+- Начало (begin):
+  - Что такое jQuery
+  - О jQuery
+  - История jQuery
+  - Краткий обзор jQuery
+  - Style guide jQuery
+  - Style guide JavaScript
+- Ядро (core)
+  - 
 - `Установка и инициализация` - эта страница
 - `select` - выборка элементов
 
@@ -20,6 +30,8 @@ https://plugins.jquery.com/ - плагины
 - https://code.jquery.com/jquery-3.6.1.min.js
 - подключаем jQuery, перед закрывающим тегом body: `<script src="js/jquery-3.6.1.min.js"></script>`
 - подключаем свой файл js, после jQuery: `<script src="js/common.js"></script>`
+
+Если используете CDN, то используйте Google.
 
 ## Инициализация
 Данный код выполнится после загрузки страницы из-за метода `ready()`, который отслеживает событие `load` у `document`:
@@ -81,3 +93,4 @@ https://plugins.jquery.com/ - плагины
 - быстрая разработка и поддержка
 - стабильная работа
 - множество готовых решений для текущих задач
+- 
