@@ -17,10 +17,24 @@ https://plugins.jquery.com/ - плагины
   - О jQuery
   - История jQuery
   - Краткий обзор jQuery
-  - Style guide jQuery
-  - Style guide JavaScript
+  - Style guide по написанию уроков
+  - Style guide по синтаксису JavaScript при использовании jQuery
 - Ядро (core)
-  - 
+  - $ vs $()
+  - $( document ).ready()
+  - Avoiding Conflicts with Other Libraries
+  - Attributes
+  - Selecting Elements
+  - Working with Selections
+  - Manipulating Elements
+  - The jQuery Object
+  - Traversing
+  - CSS, Styling, & Dimensions
+  - Data Methods
+  - Utility Methods
+  - Iterating over jQuery and non-jQuery Objects
+  - Using jQuery’s .index() Function
+  - Frequently Asked Questions (FAQ)
 - `Установка и инициализация` - эта страница
 - `select` - выборка элементов
 
@@ -34,6 +48,8 @@ https://plugins.jquery.com/ - плагины
 Если используете CDN, то используйте Google.
 
 ## Инициализация
+`$` - это переменная  
+Дополнительно читай: core/readme - ready  
 Данный код выполнится после загрузки страницы из-за метода `ready()`, который отслеживает событие `load` у `document`:
 
     jQuery(document).ready(function() {
