@@ -14,7 +14,7 @@
 - Data Methods
 - Utility Methods
 - Iterating over jQuery and non-jQuery Objects
-- Using jQuery’s .index() Function
+- Using jQuery's .index() Function
 - Frequently Asked Questions (FAQ)
 
 ## $ vs $()
