@@ -75,3 +75,17 @@ https://api.jquery.com/category/traversing/tree-traversal/
 
     div.id = 'div'
     div.className = 'somediv'
+
+# Node select
+Выборка с помощью узлов DOM.
+
+- `$('.wrap h2')`         // выбираем все h2 внутри .wrap
+- `$('.wrap').find('h2')` // выбираем все h2 внутри .wrap
+- `$('.wrap').next()`     // выбор следующего элемента после .wrap
+- `$('.wrap').children()` // выбор всех дочерних у .wrap (не потомков)
+- `$('.wrap').parent()`   // выбор родителя
+- `$('.wrap').parents()`  // выбор всех предков
+
+## Разное
+- `parents()` может принимать селекторы
+- `.children()[0]` - первый дочерний
