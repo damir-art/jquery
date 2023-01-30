@@ -1,5 +1,5 @@
 # Что такое jQuery?
-https://damir-art.ru/jquery/jquery-ot-a-do-ya-dlya-nachinayushchih/
+https://damir-art.ru/jquery/chto-takoe-jquery/
 
 Что такое jQuery? Актуальна ли данная библиотека JavaScript в 2023-м году?
 
