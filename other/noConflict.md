@@ -1,8 +1,4 @@
-# Инициализация
-Создаём свой первый скрипт с помощью jQuery.
-
-`$` - это переменная  
-Дополнительно читай: core/readme - ready  
+# noConflict()
 Данный код выполнится после загрузки страницы из-за метода `ready()`, который отслеживает событие `load` у `document`:
 
     jQuery(document).ready(function() {
@@ -25,6 +21,7 @@
 
 Наиболее безопасный способ записи jQuery, исключающий конфликты с другими библиотеками, если они используют `$`:
 
+    jQuery.noConflict();
     ;(function($, undefined){
       $(function(){
         $("h1").css("color", "green");
@@ -44,3 +41,7 @@
       let getH1 = $('h1')
       console.log(getH1) // Object -> <prototype>: Object { jquery: 
     });
+
+## Разное
+`$` - это переменная  
+Дополнительно читай: core/readme - ready  
