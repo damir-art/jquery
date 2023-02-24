@@ -26,4 +26,5 @@
     $("input").prop("disabled", true)
 
 ## Разное
-Можно удалить свойство элемента: `removeProp(propName)`.
+- Можно удалить свойство элемента: `removeProp(propName)`,
+- $(':radio').prop('checked', false) - убираем состояние вкл у всех радиокнопок.
