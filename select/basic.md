@@ -1,4 +1,5 @@
 # Базовые селекторы
+https://damir-art.ru/jquery/vyborka-elementov-c-jquery/  
 https://api.jquery.com/category/selectors/basic-css-selectors/
 
 - `$("*")` - выберем все элементы на странице,

@@ -1,4 +1,5 @@
 # Иерархические CSS селекторы
+https://damir-art.ru/jquery/ierarhicheskie-selektory-jquery/  
 https://api.jquery.com/category/selectors/hierarchy-selectors/
 
 - `$("sel sel")` - выбрать элементы потомки, в том числе и дочерние,

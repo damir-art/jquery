@@ -1,5 +1,5 @@
 # Инициализация jQuery
-https://damir-art.ru/jquery/iniczializacziya-jquery/
+https://damir-art.ru/jquery/iniczializacziya-jquery/  
 Создание первого скрипта на jQuery. Инициализация jQuery.
 
 `Изображение` баннера

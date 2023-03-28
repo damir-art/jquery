@@ -1,5 +1,5 @@
-# Вступительное 
-https://damir-art.ru/jquery/jquery-ot-a-do-ya-dlya-nachinayushchih/
+# Вступительное
+https://damir-art.ru/jquery/jquery-ot-a-do-ya-dlya-nachinayushchih/  
 Вступительное видео рассказывающее о курсе.
 
 Здравствуйте, рад приветствовать вас на курсе "jQuery от A до Я. Для начинающих.".
