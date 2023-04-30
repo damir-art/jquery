@@ -8,8 +8,44 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="main">
+    <button class="button button--hide">Скрыть</button>
+    <button class="button button--show">Показать</button>
+    <button class="button button--toggle">Переключатель</button>
 
-  <script src="js/jquery-3.6.1.min.js"></script>
-  <script src="js/common.js"></script>
+
+    <h1 class="head">jQuery</h1>
+
+    <p>
+      jQuery - библиотека языка JavaScript.
+    </p>
+  </div>
+
+  <script src="js/jquery-3.6.4.js"></script>
+  <!-- <script src="js/common.js"></script> -->
+
+  <script>
+    jQuery( document ).ready( function ( $ ) {
+      let buttonHide = $(".button--hide");
+      let buttonShow = $(".button--show");
+      let buttonToggle = $(".button--toggle");
+
+      let head = $(".head");
+
+      buttonHide.on("click", function() {
+        head.hide("slow");
+        console.log(this);
+      });
+
+      buttonShow.on("click", function() {
+        head.show("slow");
+      });
+
+      buttonToggle.on("click", function() {
+        head.toggle("slow");
+      });
+    })
+  </script>
+
 </body>
 </html>

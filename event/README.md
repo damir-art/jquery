@@ -1,16 +1,27 @@
 # События
+https://learn.jquery.com/events/  
+https://api.jquery.com/category/events/  
+
 Работаем с событиями в jQuery.
 
     $('div').on('click', function() {})
     $('div').off('click', function() {})
 
+`click` - событие, дествие со стороны пользователя или браузера, `function() {}` - обработчик события, что произойдет при возникновении события.
+
+`this` - элемент который запустил событие:
+
     $('div').on('click', function() {
-      let el = $(this)
+      let el = $(this);
     })
+
+`$(this)` - преобразовываем объект JavaScript в объект jQuery.
 
 Схема `on`:
 
     on(event, [data], handler)
+
+Оглавление:
 
 - знакомство с обработкой событий
 - методы событий клавиатуры

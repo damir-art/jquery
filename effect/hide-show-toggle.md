@@ -24,16 +24,21 @@
 ## Параметры
 Параметры: `slow`, `fast`, `число` в миллисекундах.
 
+## Аналог toggle()
+Создадим аналог `toggle()` через `if else` и метод `is()`:
+
+
+
 ## Колбэк
 Колбэк-функция, сработает после анимации:
 
-    const img = $('.img')
+    const img = $('.img');
 
     let i = 0;
     $('.btn--toggle').on('click', function() {
 
-        img.toggle('slow', function() {
-            console.log('Анимация закончилась! ' + i++)
-        })
+      img.toggle('slow', function() {
+        console.log('Анимация закончилась! ' + i++);
+      });
 
-    })
+    });

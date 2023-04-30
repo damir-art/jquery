@@ -17,9 +17,14 @@
 Фильтры, фильтрация выборки в jQuery:
 - Что такое фильтры, зачем они нужны? Виды фильтров в jQuery.
 - Базовые фильтры (Basic Filter).
+  - :first, :last, :even, :odd,
+  - :eq(), :gt(), :lt(),
+  - :root, :lang(), :header,
+  - :animated, :focus, :not(), :target.
 - Фильтры потомков (Child Filter).
 - Контентные фильтры (Content Filter).
 - Фильтры видимости (Visibility Filter).
+- jQuery Extensions (Для опытных, при первом прсомотре курса можете пропустить этот урок)
 
 Работаем с CSS в jQuery:
 - Работаем со встроенными стилями через метод `css()`.
