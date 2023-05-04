@@ -1,2 +1,2 @@
-# jQuery API
-- https://api.jquery.com/Types/ - типы jQuery
+# API
+Рассматриваем каждый метод в отдельности.

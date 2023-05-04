@@ -9,11 +9,6 @@
 </head>
 <body>
   <div class="main">
-    <button class="button button--hide">Скрыть</button>
-    <button class="button button--show">Показать</button>
-    <button class="button button--toggle">Переключатель</button>
-
-
     <h1 class="head">jQuery</h1>
 
     <p>
@@ -26,25 +21,14 @@
 
   <script>
     jQuery( document ).ready( function ( $ ) {
-      let buttonHide = $(".button--hide");
-      let buttonShow = $(".button--show");
-      let buttonToggle = $(".button--toggle");
+      let button = $(" <button class='button button--toggle'>Переключатель</button> ");
+      head = $(" .head ");
+      button.insertBefore(" .head ");
 
-      let head = $(".head");
-
-      buttonHide.on("click", function() {
-        head.hide("slow");
-        console.log(this);
+      button.on("click", function() {
+        head.toggle(" slow ");
       });
-
-      buttonShow.on("click", function() {
-        head.show("slow");
-      });
-
-      buttonToggle.on("click", function() {
-        head.toggle("slow");
-      });
-    })
+    });
   </script>
 
 </body>

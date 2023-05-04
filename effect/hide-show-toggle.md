@@ -27,7 +27,13 @@
 ## Аналог toggle()
 Создадим аналог `toggle()` через `if else` и метод `is()`:
 
-
+    buttonToggle.on("click", function() {
+      if (head.is(":visible")) {
+        head.hide("slow");
+      } else {
+        head.show("slow");
+      }
+    });
 
 ## Колбэк
 Колбэк-функция, сработает после анимации:
