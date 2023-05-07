@@ -55,4 +55,9 @@ jQuery( document ).ready( function ( $ ) {
   //   head.toggle("slow"); // если поставить выше условия то условие всегда будет true
   // });
 
+  // Кликаем первый раз по строке таблицы, она подсвечивается, кликаем второй раз подсветка спадает
+  // jQuery("tr").click(function() {
+  //   $(this).toggleClass("class");
+  // });
+
 })

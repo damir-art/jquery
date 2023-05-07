@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.menu-button {
+  display: none;
+}
+
+.navigation {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    display: none;
+  }
+
+  .navigation.active {
+    display: flex;
+  }
+
+  .menu-button {
+    display: block;
+  }
+}
+  </style>
+</head>
+<body>
+<div class="main">
+
+  <header>
+    <h1>Мой сайт</h1>
+    <nav class="navigation">
+      <a href="#">Главная</a>
+      <a href="#">О нас</a>
+      <a href="#">Контакты</a>
+    </nav>
+    <button class="menu-button">Меню</button>
+  </header>
+
+</div>
+
+<script src="../js/jquery-3.6.4.js"></script>
+<script>
+  $(document).ready(function() {
+    // выбираем кнопку меню и навигационное меню
+    var menuButton = $('.menu-button');
+    var navigation = $('.navigation');
+
+    // при клике на кнопку меню
+    menuButton.on('click', function() {
+      // добавляем/удаляем класс active
+      navigation.toggleClass('active');
+    });
+
+    // при изменении размера окна
+    $(window).on('resize', function() {
+      // если ширина окна больше 768 пикселей
+      if ($(window).width() > 768) {
+        // удаляем класс active
+        navigation.removeClass('active');
+      }
+    });
+  });
+</script>
+
+<!-- В этом примере мы создали компонент адаптивного меню. На экранах с шириной больше 768 пикселей, меню отображается в виде обычного горизонтального меню. А на экранах меньше 768 пикселей, меню становится вертикальным и отображается через кнопку меню. При клике на кнопку меню, навигационное меню скрывается или отображается. Класс active добавляется или удаляется в зависимости от текущего состояния меню. Также мы добавили CSS стили для адаптивной верстки, используя медиа-запросы. -->
+</body>
+</html>

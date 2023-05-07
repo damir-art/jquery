@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form input, .form button {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form button[type="submit"] {
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.form input:invalid {
+  border-color: #a94442;
+}
+
+.form input:valid {
+  border-color: #3c763d;
+}
+  </style>
+</head>
+<body>
+
+  <form class="form">
+    <label for="name">Имя</label>
+    <input type="text" id="name" name="name" required>
+  
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" required>
+  
+    <label for="password">Пароль</label>
+    <input type="password" id="password" name="password" minlength="6" required>
+  
+    <button type="submit">Отправить</button>
+  </form>
+
+<script>
+  $(document).ready(function() {
+  // выбираем форму и элементы ввода
+  var form = $('.form');
+  var nameInput = $('#name');
+  var emailInput = $('#email');
+  var passwordInput = $('#password');
+
+  // при отправке формы
+  form.submit(function(event) {
+    // проверяем валидность элементов ввода
+    if (!nameInput[0].checkValidity() || !emailInput[0].checkValidity() || !passwordInput[0].checkValidity()) {
+      // если элементы не валидны, останавливаем отправку формы
+      event.preventDefault();
+    }
+  });
+});
+</script>
+
+<!-- В этом примере мы создали компонент формы. Добавили обязательные атрибуты required и minlength для полей имени, email и пароля. Также мы добавили стили, которые будут применяться для элементов ввода в зависимости от их валидности.
+
+Для проверки валидности формы мы выбрали форму и элементы ввода, и добавили обработчик отправки формы (form.submit()). В этом обработчике мы проверяем валидность элементов ввода, и если хоть один из них не валиден, то мы останавливаем отправку формы (event.preventDefault()).
+
+Теперь при попытке отправить форму с невалидными данными, отображаются стандартные браузерные сообщения об ошибках валидации для соответствующих полей. -->
+</body>
+</html>

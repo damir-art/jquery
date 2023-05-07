@@ -5,8 +5,10 @@ https://learn.jquery.com/effects/
 http://api.jquery.com/category/effects/  
 
 - hide/show
-- slide
-- fade
+- slide -  анимация ширины, высоты
+- fade - анимация прозрачности
+- slow, fast, normal, ms
+- $( "el" ).toggle( "slow" ) - анимация ширины, высоты, прозрачности
 - animate
 
 Содержание:

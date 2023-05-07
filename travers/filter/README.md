@@ -1,6 +1,5 @@
-# Фильтры траверсы
+# Filtering (фильтрация)
 https://damir-art.ru  
-
 https://api.jquery.com/category/traversing/filtering/
 
 - `eq()` - уменьшает набор совпадающих элементов до одного по указанному индексу,

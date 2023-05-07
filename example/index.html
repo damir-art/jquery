@@ -26,7 +26,10 @@
       button.insertBefore(" .head ");
 
       button.on("click", function() {
-        head.toggle(" slow ");
+        let self = this;
+        head.toggle(" slow ", function () {
+          console.log($(self).hide("slow"));
+        });
       });
     });
   </script>

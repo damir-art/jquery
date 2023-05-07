@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* CSS-код модального окна */
+    .modal {
+      /* display: none; */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .modal-content {
+            width: 90%;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+
+    <!-- HTML-код модального окна -->
+    <button class="button" id="open-modal">Открыть модальное окно</button>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h2>Модальное окно</h2>
+        <p>Тут должен быть текст модального окна</p>
+        <button class="button" id="close-modal">Закрыть модальное окно</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/jquery-3.6.4.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#open-modal').click(function() {
+        $('#modal').fadeIn();
+      });
+
+      $('#close-modal').click(function() {
+        $('#modal').fadeOut();
+      });
+
+      // Закрыть модальное окно при клике вне области окна
+      $(window).click(function(e) {
+        if (e.target.id == 'modal') {
+          $('#modal').fadeOut();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
