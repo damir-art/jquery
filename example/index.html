@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Курс на jQuery от А до Я</title>
+  <link rel="icon" href="/example/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,17 +21,11 @@
   <!-- <script src="js/common.js"></script> -->
 
   <script>
-    jQuery( document ).ready( function ( $ ) {
-      let button = $(" <button class='button button--toggle'>Переключатель</button> ");
-      head = $(" .head ");
-      button.insertBefore(" .head ");
-
-      button.on("click", function() {
-        let self = this;
-        head.toggle(" slow ", function () {
-          console.log($(self).hide("slow"));
-        });
-      });
+    // https://api.opendota.com/api/heroes
+    let p = $("p");
+    $.get("foo.php", function( response ) {
+      console.log( response ); // server response
+      p.after( response ); // Вставляем данные запроса после абзаца
     });
   </script>
 

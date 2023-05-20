@@ -60,4 +60,17 @@ jQuery( document ).ready( function ( $ ) {
   //   $(this).toggleClass("class");
   // });
 
+  // Создаём кнопку если поддерживается JS, кликаем по кнопке, скрывается надпись, а затем кнопка
+  // jQuery( document ).ready( function ( $ ) {
+  //   let button = $(" <button class='button button--toggle'>Переключатель</button> ");
+  //   head = $(" .head ");
+  //   button.insertBefore(" .head ");
+  //   button.on("click", function() {
+  //     let self = this;
+  //     head.toggle(" slow ", function () {
+  //       console.log($(self).hide("slow"));
+  //     });
+  //   });
+  // });
+
 })
