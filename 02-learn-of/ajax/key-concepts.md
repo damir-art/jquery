@@ -42,7 +42,7 @@ jQuery обычно требует некоторых инструкций от�
     let p = $("p");
     $.get( "foo.php", function( response ) {
       console.log( response ); // server response
-      p.after( response );
+      p.after( response ); // Вставляем данные запроса после абзаца
     });
 
 ## Same-Origin Policy and JSONP
