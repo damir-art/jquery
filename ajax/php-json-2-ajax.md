@@ -224,3 +224,118 @@ send.php:
     // Отправляем клиенту JSON формат данных
     header('Content-Type: application/json');
     echo json_encode($result);
+
+## JSON ERROR
+При работе с JSON может всплыть одна ошибка - после запроса сервер отдал результат, все хорошо, но метод `success` не срабатывает. Причина кроется в серверной части (PHP) т.к. перед данными могут появится управляющие символы, например (таб, пробел и т.п.).
+
+Из-за них ответ считается не валидным и считается как ошибочный запрос. В таких случаях помогает очистка буфера вывода `ob_end_clean` (если он используется на сайте).
+
+    // Очистка буфера
+    ob_end_clean(); 
+        
+    header('Content-Type: application/json');
+    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    exit();
+
+`JSON_UNESCAPED_UNICODE` - не кодировать многобайтовые символы Unicode (по умолчанию они кодируются как \uXXXX).
+
+## Выполнение JS загруженного через AJAX
+В JQuery реализована функция подгруздки кода JS через AJAX, после успешного запроса он будет сразу выполнен.
+
+    $.ajax({
+      method: 'get',
+      url: '/script.js',
+      dataType: "script"
+    });
+
+Сокращенный код:
+
+    $.getScript('/script.js');
+
+## Дождаться выполнения AJAX запроса
+По умолчанию, в JQuery, AJAX запросы выполняются асинхронно. Запрос не блокирует выполнение программы (пока ждет ответа), а работает параллельно:
+
+    var text = '';
+    
+    $.ajax({
+      url: '/index.php',
+      method: 'get',
+      dataType: 'html',
+      success: function(data){
+        text = data;
+      }
+    });
+    
+    alert(text);  // В переменную ничего не запишется
+
+Чтобы включить синхронный режим нужно добавить параметр `async: false`:
+
+    var text = '';
+
+    $.ajax({
+      url: '/index.php',
+      method: 'get',
+      dataType: 'html',
+      async: false,
+      success: function(data){
+        text = data;
+      }
+    });
+
+    alert(text); // В переменной будет результат из index.php
+
+## Отправка HTTP заголовков
+Через AJAX можно отправить заголовки HEAD, они указываются в параметре `headers`:
+
+    $.ajax({
+      url: '/index.php',
+      method: 'get',
+      dataType: 'html',
+      headers: { 'Token_value': 123 },
+      success: function(data){
+        console.dir(data);
+      }
+    });
+
+В PHP они будут доступны в массиве `$_SERVER`, ключ массива переводится в верхний регистр с приставкой `HTTP_`, например:
+
+    <?php
+    echo $_SERVER['HTTP_TOKEN_VALUE']; // 123
+
+## Обработка ошибок
+Через параметр `error` задается callback-функция, которая будет вызвана в случае если запрашиваемый ресурс отдал `404`, `500` или другой код:
+
+    $.ajax({
+      url: '/index.php',
+      method: 'get',
+      dataType: 'json',
+      success: function(data){
+        console.dir(data);
+      },
+      error: function (jqXHR, exception) {
+        if (jqXHR.status === 0) {
+          alert('Not connect. Verify Network.');
+        } else if (jqXHR.status == 404) {
+          alert('Requested page not found (404).');
+        } else if (jqXHR.status == 500) {
+          alert('Internal Server Error (500).');
+        } else if (exception === 'parsererror') {
+          alert('Requested JSON parse failed.');
+        } else if (exception === 'timeout') {
+          alert('Time out error.');
+        } else if (exception === 'abort') {
+          alert('Ajax request aborted.');
+        } else {
+          alert('Uncaught Error. ' + jqXHR.responseText);
+        }
+      }
+    });
+
+Через `$.ajaxSetup` можно задать обработчик ошибок для всех AJAX-запросов на сайте:
+
+    $.ajaxSetup({
+      error: function (jqXHR, exception) {
+        ...
+      }
+    });
+
