@@ -4,24 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Курс на jQuery от А до Я</title>
+  <title>Курс jQuery от А до Я. Для начинающих.</title>
   <link rel="icon" href="/example/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="main">
-    <h1 class="head">jQuery</h1>
 
-    <p>
-      jQuery - библиотека языка JavaScript.
-    </p>
-  </div>
+  <ul>
+    <li>Ноль</li>
+    <li>Один</li>
+    <li>Два</li>
+    <li>Три</li>
+    <li>Четыре</li>
+    <li>Пять</li>
+    <li>Шесть</li>
+    <li>Семь</li>
+    <li>Восемь</li>
+    <li>Девять</li>
+  </ul>
 
   <script src="js/jquery-3.6.4.js"></script>
-  <!-- <script src="js/common.js"></script> -->
 
   <script>
-    
+    $('li:even').css('color', 'green');
+    // $('li:odd').css('color', 'green');
   </script>
 
 </body>
