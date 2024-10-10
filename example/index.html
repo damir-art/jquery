@@ -10,25 +10,38 @@
 </head>
 <body>
 
+<div class="main">
   <ul>
     <li>Ноль</li>
     <li>Один</li>
     <li>Два</li>
     <li>Три</li>
     <li>Четыре</li>
-    <li>Пять</li>
-    <li>Шесть</li>
-    <li>Семь</li>
-    <li>Восемь</li>
-    <li>Девять</li>
   </ul>
+  <div class="actions flex">
+    <input class="button" type="button" name="save" data-tovar="Товар 1" value="Сохранить">
+    <input class="button" type="button" name="delete" data-tovar="Товар 2" value="Удалить">
+  </div>
+</div>
 
   <script src="js/jquery-3.6.4.js"></script>
 
-  <script>
-    $('li:even').css('color', 'green');
-    // $('li:odd').css('color', 'green');
-  </script>
+<script>
+window.onload = function ( evt ) {
+
+  const obj = {
+    ru: 'Россия',
+    us: 'США',
+    cn: 'Китай'
+  }
+
+  for (const key in obj) {
+    console.log( obj[key] );
+  }
+
+}
+
+</script>
 
 </body>
 </html>

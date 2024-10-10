@@ -11,33 +11,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* Кнопка */
 .button {
-  padding: 8px 16px;
-  margin-top: 16px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: white;
-  background-color: #e74c3c;
+  padding: 4px 8px;
+  font-size: 18px;
 }
-.button:hover {
-  background-color: #c0392b;
-}
-.button:active {
-  /* background-color: #c0392b; */
-  transform: scale(0.98);
-}
-
-/* Заголовок */
-.head {
-  color: white;
-  background-color: #2ecc71;
-  padding: 8px 16px;
-  margin: 0;
-  margin-top: 16px;
-}
-.head--red {
-  background-color: #e74c3c;
+.flex {
+  display: flex;
+  gap: 8px;
 }
