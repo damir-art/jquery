@@ -10,36 +10,210 @@
 </head>
 <body>
 
-<div class="main">
-  <ul>
-    <li>Ноль</li>
-    <li>Один</li>
-    <li>Два</li>
-    <li>Три</li>
-    <li>Четыре</li>
-  </ul>
-  <div class="actions flex">
-    <input class="button" type="button" name="save" data-tovar="Товар 1" value="Сохранить">
-    <input class="button" type="button" name="delete" data-tovar="Товар 2" value="Удалить">
-  </div>
-</div>
+<style>
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.slider__images {
+  display: flex;
+  flex-direction: column;
+}
+.slider__item {
+  display: flex;
+  max-width: 800px;
+}
+.slider__image {
+  max-width: 100%;
+  height: auto;
+  display: none;
+}
+.slider__current {
+  display: block;
+}
+.slider__buttons {
+  display: flex;
+  gap: 8px;
+}
+.slider__button {
+  font-size: 18px;
+  padding: 4px 16px;
+}
+.slider__counter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(236, 240, 241, 1.0);
+  background-color: rgba(155, 89, 182, .8);
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  font-size: 22px;
+  font-weight: 900;
+}
+</style>
 
-  <script src="js/jquery-3.6.4.js"></script>
+<div class="main">
+
+  <!-- СЛАЙДЕР 1 -->
+  <div class="slider slider-1">
+    <div class="slider__images">
+      <div class="slider__item">
+        <img class="slider__image slider__current" src="./img/bmw-1.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-2.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-3.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-4.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-5.jpg" alt="">
+      </div>
+    </div> <!-- slider__images -->
+
+    <div class="slider__buttons">
+      <button class="slider__button slider__button--prev" type="button">Назад</button>
+      <button class="slider__button slider__button--next" type="button">Вперед</button>
+    </div> <!-- slider__buttons -->
+
+    <div class="slider__counter">
+      <div class="slider__number"><span><span></div>
+      <div>из</div>
+      <div class="slider__total"><span></span></div>
+    </div> <!-- slider__counter -->
+  </div> <!-- slider -->
+
+  <hr style="margin-top: 24px;margin-bottom: 24px;">
+
+  <!-- СЛАЙДЕР 2 -->
+  <div class="slider slider-2">
+    <div class="slider__images">
+      <div class="slider__item">
+        <img class="slider__image slider__current" src="./img/bmw-1.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-2.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-3.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-4.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img class="slider__image" src="./img/bmw-5.jpg" alt="">
+      </div>
+    </div> <!-- slider__images -->
+
+    <div class="slider__buttons">
+      <button class="slider__button slider__button--prev" type="button">Назад</button>
+      <button class="slider__button slider__button--next" type="button">Вперед</button>
+    </div> <!-- slider__buttons -->
+
+    <div class="slider__counter">
+      <div class="slider__number"><span><span></div>
+      <div>из</div>
+      <div class="slider__total"><span></span></div>
+    </div> <!-- slider__counter -->
+  </div> <!-- slider -->
+
+</div> <!-- main -->
 
 <script>
+/*
+  Простой слайдер без анимации
+  Вам нужно ничего не меняя в верстке просто добавлять классы анимации
+  Если слайды должны появляться сбоку то измените flex-direction: column на row у .slider__images
+*/
 window.onload = function ( evt ) {
 
-  const obj = {
-    ru: 'Россия',
-    us: 'США',
-    cn: 'Китай'
-  }
+  let images1 = document.querySelectorAll( '.slider-1 .slider__image' );
+  let next1 = document.querySelector( '.slider-1 .slider__button--next' );
+  let prev1 = document.querySelector( '.slider-1 .slider__button--prev' );
 
-  for (const key in obj) {
-    console.log( obj[key] );
+  // Первый слайдер
+  const slider1 = new Slider( images1 );
+  next1.addEventListener( 'click', function () {
+    slider1.next();
+  });
+  prev1.addEventListener( 'click', function () {
+    slider1.prev();
+  });
+
+  let images2 = document.querySelectorAll( '.slider-2 .slider__image' );
+  let prev2 = document.querySelector( '.slider-2 .slider__button--prev' );
+  let next2 = document.querySelector( '.slider-2 .slider__button--next' );
+
+  // Второй слайдер
+  const slider2 = new Slider( images2 );
+  next2.addEventListener( 'click', function () {
+    slider2.next();
+  });
+  prev2.addEventListener( 'click', function () {
+    slider2.prev();
+  });
+
+  // Как допилить слайдер?
+  // Оработку событий перенестив конструктор
+
+  /*
+    Создаём функцию конструктор для нескольких слайдеров.
+    Внутри методов к полям класса обращаемся через this (чтобы сохранить контекс), например this.images.
+    Переменные становятся полями текущего класса и объекта слайдера.
+    Если внутри класса используется локальная переменная вместо свойства, то this писать не надо.
+    Например flag можно сделать приватным полем.
+  */
+
+  function Slider ( images ) {
+    // Свойства
+    this.images = images; // публичное поле, принадлежит объекту
+    let flag = 0; // приватное поле, принадлежит классу
+
+    // let sliderTotalSpan = document.querySelector( '.slider__total span' );
+    // let sliderNumberSpan = document.querySelector( '.slider__number span' );
+    // sliderTotalSpan.innerHTML = this.images.length;
+    // sliderNumberSpan.innerHTML = 1;
+
+    // Методы
+    this.next = function () {
+      flag++;
+
+      for ( let i = 0; i < this.images.length; i++ ) {
+        this.images[ i ].classList.remove( 'slider__current' );
+      }
+      if ( flag == this.images.length ) {
+        flag = 0;
+      };
+      this.images[ flag ].classList.add( 'slider__current' );
+      // sliderNumberSpan.innerHTML = flag + 1;
+    }
+
+    this.prev = function () {
+      flag--;
+      for ( let i = 0; i < this.images.length; i++ ) {
+        this.images[ i ].classList.remove( 'slider__current' );
+      }
+      if ( flag < 0 ) {
+        flag = this.images.length - 1;
+      };
+      this.images[ flag ].classList.add( 'slider__current' );
+      // sliderNumberSpan.innerHTML = flag + 1;
+    }
   }
 
 }
+
 
 </script>
 

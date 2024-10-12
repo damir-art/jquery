@@ -1,4 +1,7 @@
 # data-attributes
+см example/price.md
+
+data-attributes - дата атрибуты, информационные атрибуты. Дата атрибуты внедряются в теги с помощью PHP, а данные для значений дата атрибутов берутся из БД.
 
     <div class="actions flex">
       <input class="button" type="button" name="save" data-tovar="Товар 1" value="Сохранить">
