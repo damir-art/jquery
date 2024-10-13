@@ -62,7 +62,6 @@
 
 <div class="main">
 
-  <!-- СЛАЙДЕР 1 -->
   <div class="slider slider-1">
     <div class="slider__images">
       <div class="slider__item">
@@ -92,11 +91,10 @@
       <div>из</div>
       <div class="slider__total"><span></span></div>
     </div> <!-- slider__counter -->
-  </div> <!-- slider -->
+  </div> <!-- slider-1 -->
 
   <hr style="margin-top: 24px;margin-bottom: 24px;">
 
-  <!-- СЛАЙДЕР 2 -->
   <div class="slider slider-2">
     <div class="slider__images">
       <div class="slider__item">
@@ -126,67 +124,29 @@
       <div>из</div>
       <div class="slider__total"><span></span></div>
     </div> <!-- slider__counter -->
-  </div> <!-- slider -->
+  </div> <!-- slider-2 -->
 
 </div> <!-- main -->
 
 <script>
-/*
-  Простой слайдер без анимации
-  Вам нужно ничего не меняя в верстке просто добавлять классы анимации
-  Если слайды должны появляться сбоку то измените flex-direction: column на row у .slider__images
-*/
 window.onload = function ( evt ) {
 
-  let images1 = document.querySelectorAll( '.slider-1 .slider__image' );
-  let next1 = document.querySelector( '.slider-1 .slider__button--next' );
-  let prev1 = document.querySelector( '.slider-1 .slider__button--prev' );
+  function Slider ( settings ) {
+    // Обычные свойства объекта
+    this.images   = document.querySelectorAll( `${settings.images} .slider__image` );
+    this.autoloop = settings.autoloop;
+    this.rate     = settings.rate || 1000; // Если скорость автолупа не задана, то по-умолчанию будет 1000
 
-  // Первый слайдер
-  const slider1 = new Slider( images1 );
-  next1.addEventListener( 'click', function () {
-    slider1.next();
-  });
-  prev1.addEventListener( 'click', function () {
-    slider1.prev();
-  });
+    // Приватные свойства объекта
+    let slider = this; // добавляем там, где теряется контекст объекта: события, setInterval и т.п.
+    let next   = document.querySelector( `${settings.images} .slider__button--next` );
+    let prev   = document.querySelector( `${settings.images} .slider__button--prev` );
+    let flag   = 0;
 
-  let images2 = document.querySelectorAll( '.slider-2 .slider__image' );
-  let prev2 = document.querySelector( '.slider-2 .slider__button--prev' );
-  let next2 = document.querySelector( '.slider-2 .slider__button--next' );
-
-  // Второй слайдер
-  const slider2 = new Slider( images2 );
-  next2.addEventListener( 'click', function () {
-    slider2.next();
-  });
-  prev2.addEventListener( 'click', function () {
-    slider2.prev();
-  });
-
-  // Как допилить слайдер?
-  // Оработку событий перенестив конструктор
-
-  /*
-    Создаём функцию конструктор для нескольких слайдеров.
-    Внутри методов к полям класса обращаемся через this (чтобы сохранить контекс), например this.images.
-    Переменные становятся полями текущего класса и объекта слайдера.
-    Если внутри класса используется локальная переменная вместо свойства, то this писать не надо.
-    Например flag можно сделать приватным полем.
-  */
-
-  function Slider ( images ) {
-    // Свойства
-    this.images = images; // публичное поле, принадлежит объекту
-    let flag = 0; // приватное поле, принадлежит классу
-
-    // let sliderTotalSpan = document.querySelector( '.slider__total span' );
-    // let sliderNumberSpan = document.querySelector( '.slider__number span' );
-    // sliderTotalSpan.innerHTML = this.images.length;
-    // sliderNumberSpan.innerHTML = 1;
+    // console.log( this ); // тут контекст объекта
 
     // Методы
-    this.next = function () {
+    this.getNext = function () {
       flag++;
 
       for ( let i = 0; i < this.images.length; i++ ) {
@@ -196,11 +156,11 @@ window.onload = function ( evt ) {
         flag = 0;
       };
       this.images[ flag ].classList.add( 'slider__current' );
-      // sliderNumberSpan.innerHTML = flag + 1;
     }
 
-    this.prev = function () {
+    this.getPrev = function () {
       flag--;
+
       for ( let i = 0; i < this.images.length; i++ ) {
         this.images[ i ].classList.remove( 'slider__current' );
       }
@@ -208,13 +168,50 @@ window.onload = function ( evt ) {
         flag = this.images.length - 1;
       };
       this.images[ flag ].classList.add( 'slider__current' );
-      // sliderNumberSpan.innerHTML = flag + 1;
+    }
+
+    next.addEventListener( 'click', function () {
+      // console.log( this ); // тут теряется контекст слайдера и появляется у кнопки,
+      // у кнопки нет метода getNext
+      slider.getNext();
+    });
+
+    prev.addEventListener( 'click', function () {
+      slider.getPrev();
+    });
+
+    // Можно сделать так, но тогда внутри метода getPrev придется this заменить на slider
+    // иначе контекстом будет выступать кнопка у которой нет свойства images
+    // prev.addEventListener( 'click', slider.getPrev);
+
+    if( this.autoloop ) {
+      setInterval( function() {
+        slider.getNext();
+      }, this.rate );
     }
   }
 
+  // Создаём слайдер и передаём в него объект настроек
+  // Первый слайдер на странице
+  const slider1 = new Slider({
+    images: '.slider-1',
+    autoloop: false,
+  });
+
+  // Второй слайдер на странице
+  // Можно не присваивать в переменную
+  new Slider({
+    images: '.slider-2',
+    autoloop: true,
+  });
+
+  // Далее чтобы сделать слайдер более универсальным, можно передавать CSS-идентификатор
+  // а в самом классе искать элементы не через CSS, а через методы перемещения по DOM
+  // Нужно ли добавлять анимацию?
+  // Анимацию лучше добавлять отдельным плагином и настраивать её для слайдера через настройки,
+  // или CSS классы в вёрстке
+
 }
-
-
 </script>
 
 </body>
