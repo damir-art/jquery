@@ -153,3 +153,5 @@
     window.prev()
     window.slider.prev()
     window.prev.call() // сами задаём this
+
+В setInterval вместо slider.getNext(), можно вставить btnNext.onclick() (см. `next-onclick.png` никогда так не делайте, потому что это будет не трастед событие, событие которое запустил не пользователь) и он сам будет генерировать событие нажатия по кнопке.

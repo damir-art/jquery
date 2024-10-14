@@ -11,208 +11,43 @@
 <body>
 
 <style>
-.slider {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-}
-.slider__images {
-  display: flex;
-  flex-direction: column;
-}
-.slider__item {
-  display: flex;
-  max-width: 800px;
-}
-.slider__image {
-  max-width: 100%;
-  height: auto;
-  display: none;
-}
-.slider__current {
-  display: block;
-}
-.slider__buttons {
-  display: flex;
-  gap: 8px;
-}
-.slider__button {
-  font-size: 18px;
-  padding: 4px 16px;
-}
-.slider__counter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: rgba(236, 240, 241, 1.0);
-  background-color: rgba(155, 89, 182, .8);
-  display: flex;
-  gap: 4px;
-  width: 100%;
-  padding: 8px 16px;
-  box-sizing: border-box;
-  font-size: 22px;
-  font-weight: 900;
+.fs {
+  font-size: 20px;
 }
 </style>
 
 <div class="main">
-
-  <div class="slider slider-1">
-    <div class="slider__images">
-      <div class="slider__item">
-        <img class="slider__image slider__current" src="./img/bmw-1.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-2.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-3.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-4.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-5.jpg" alt="">
-      </div>
-    </div> <!-- slider__images -->
-
-    <div class="slider__buttons">
-      <button class="slider__button slider__button--prev" type="button">Назад</button>
-      <button class="slider__button slider__button--next" type="button">Вперед</button>
-    </div> <!-- slider__buttons -->
-
-    <div class="slider__counter">
-      <div class="slider__number"><span><span></div>
-      <div>из</div>
-      <div class="slider__total"><span></span></div>
-    </div> <!-- slider__counter -->
-  </div> <!-- slider-1 -->
-
-  <hr style="margin-top: 24px;margin-bottom: 24px;">
-
-  <div class="slider slider-2">
-    <div class="slider__images">
-      <div class="slider__item">
-        <img class="slider__image slider__current" src="./img/bmw-1.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-2.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-3.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-4.jpg" alt="">
-      </div>
-      <div class="slider__item">
-        <img class="slider__image" src="./img/bmw-5.jpg" alt="">
-      </div>
-    </div> <!-- slider__images -->
-
-    <div class="slider__buttons">
-      <button class="slider__button slider__button--prev" type="button">Назад</button>
-      <button class="slider__button slider__button--next" type="button">Вперед</button>
-    </div> <!-- slider__buttons -->
-
-    <div class="slider__counter">
-      <div class="slider__number"><span><span></div>
-      <div>из</div>
-      <div class="slider__total"><span></span></div>
-    </div> <!-- slider__counter -->
-  </div> <!-- slider-2 -->
-
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum blanditiis mollitia sunt omnis dolor beatae culpa velit, laboriosam officia dolore quod, dolorem fugit. Dicta sint iure laudantium omnis, rerum possimus!</p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum blanditiis mollitia sunt omnis dolor beatae culpa velit, laboriosam officia dolore quod, dolorem fugit. Dicta sint iure laudantium omnis, rerum possimus!</p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum blanditiis mollitia sunt omnis dolor beatae culpa velit, laboriosam officia dolore quod, dolorem fugit. Dicta sint iure laudantium omnis, rerum possimus!</p>
 </div> <!-- main -->
 
+<script src="js/lib.js"></script>
 <script>
-window.onload = function ( evt ) {
+  // Выбираем элементы через CSS селектор
+  // Возвращается объект класса Lib, внутри которого хранятся выбранные элементы
+  // У этого объекта есть различные свойства и методы которые могут применяться к этим элементам
+  let selectP = g('p');
 
-  function Slider ( settings ) {
-    // Обычные свойства объекта
-    this.images   = document.querySelectorAll( `${settings.images} .slider__image` );
-    this.autoloop = settings.autoloop;
-    this.rate     = settings.rate || 1000; // Если скорость автолупа не задана, то по-умолчанию будет 1000
-
-    // Приватные свойства объекта
-    let slider = this; // добавляем там, где теряется контекст объекта: события, setInterval и т.п.
-    let next   = document.querySelector( `${settings.images} .slider__button--next` );
-    let prev   = document.querySelector( `${settings.images} .slider__button--prev` );
-    let flag   = 0;
-
-    // console.log( this ); // тут контекст объекта
-
-    // Методы
-    this.getNext = function () {
-      flag++;
-
-      for ( let i = 0; i < this.images.length; i++ ) {
-        this.images[ i ].classList.remove( 'slider__current' );
-      }
-      if ( flag == this.images.length ) {
-        flag = 0;
-      };
-      this.images[ flag ].classList.add( 'slider__current' );
+  selectP.on( 'click', function() {
+    if ( this.style.color == 'black' ) {
+      this.style.color = 'blue';
+    } else {
+      this.style.color = 'black';
     }
-
-    this.getPrev = function () {
-      flag--;
-
-      for ( let i = 0; i < this.images.length; i++ ) {
-        this.images[ i ].classList.remove( 'slider__current' );
-      }
-      if ( flag < 0 ) {
-        flag = this.images.length - 1;
-      };
-      this.images[ flag ].classList.add( 'slider__current' );
-    }
-
-    next.addEventListener( 'click', function () {
-      // console.log( this ); // тут теряется контекст слайдера и появляется у кнопки,
-      // у кнопки нет метода getNext
-      slider.getNext();
-    });
-
-    prev.addEventListener( 'click', function () {
-      slider.getPrev();
-    });
-
-    // Можно сделать так, но тогда внутри метода getPrev придется this заменить на slider
-    // иначе контекстом будет выступать кнопка у которой нет свойства images
-    // prev.addEventListener( 'click', slider.getPrev);
-
-    if( this.autoloop ) {
-      setInterval( function() {
-        slider.getNext();
-      }, this.rate );
-    }
-  }
-
-  // Создаём слайдер и передаём в него объект настроек
-  // Первый слайдер на странице
-  const slider1 = new Slider({
-    images: '.slider-1',
-    autoloop: false,
+    // console.log( g(this) )
   });
 
-  // Второй слайдер на странице
-  // Можно не присваивать в переменную
-  new Slider({
-    images: '.slider-2',
-    autoloop: true,
-  });
+  g('p').addClass( 'fs' ).addClass( 'fs-2' ).addClass( 'fs-3' );
 
-  // Далее чтобы сделать слайдер более универсальным, можно передавать CSS-идентификатор
-  // а в самом классе искать элементы не через CSS, а через методы перемещения по DOM
-  // Нужно ли добавлять анимацию?
-  // Анимацию лучше добавлять отдельным плагином и настраивать её для слайдера через настройки,
-  // или CSS классы в вёрстке
-
-}
 </script>
 
 </body>
 </html>
+<!--
+40,
+12,
+-->
