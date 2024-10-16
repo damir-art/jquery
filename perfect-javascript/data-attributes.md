@@ -20,3 +20,6 @@ data-attributes - дата атрибуты, информационные атр
     function clickBtn ( evt ) {
       console.log( this.dataset.tovar ); // Товар 1 || Товар 2
     }
+
+## Разное
+Интересное использование дата атрибутов в модалках: `example/pop-up.md` строка 148.

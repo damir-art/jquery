@@ -32,22 +32,8 @@
   // У этого объекта есть различные свойства и методы которые могут применяться к этим элементам
   let selectP = g('p');
 
-  selectP.on( 'click', function() {
-    if ( this.style.color == 'black' ) {
-      this.style.color = 'blue';
-    } else {
-      this.style.color = 'black';
-    }
-    // console.log( g(this) )
-  });
-
-  g('p').addClass( 'fs' ).addClass( 'fs-2' ).addClass( 'fs-3' );
-
+  console.log(g('p').html());
 </script>
 
 </body>
 </html>
-<!--
-40,
-12,
--->
