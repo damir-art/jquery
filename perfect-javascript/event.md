@@ -1,4 +1,5 @@
 # События
+События внутри события не бывает.
 
     window.onload = function (evt) {
       console.log(evt); // isTrusted: true - событие браузера

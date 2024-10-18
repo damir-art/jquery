@@ -11,28 +11,61 @@
 <body>
 
 <style>
-.fs {
-  font-size: 20px;
+html, body{
+  margin: 0;
+  background: #eee;
+}
+.faq{
+  padding: 30px;
+  max-width: 600px;
+}
+.faq .item{
+  height: 200px;
+  margin: 30px 0;
+  background: #f90;
 }
 </style>
 
 <div class="main">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum blanditiis mollitia sunt omnis dolor beatae culpa velit, laboriosam officia dolore quod, dolorem fugit. Dicta sint iure laudantium omnis, rerum possimus!</p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum blanditiis mollitia sunt omnis dolor beatae culpa velit, laboriosam officia dolore quod, dolorem fugit. Dicta sint iure laudantium omnis, rerum possimus!</p>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum blanditiis mollitia sunt omnis dolor beatae culpa velit, laboriosam officia dolore quod, dolorem fugit. Dicta sint iure laudantium omnis, rerum possimus!</p>
+  <div class="faq">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
 </div> <!-- main -->
 
-<script src="js/lib.js"></script>
+<script src="./js/jquery-3.2.0.min.js"></script>
+<script src="./js/jquery.bez.min.js"></script>
 <script>
-  // Выбираем элементы через CSS селектор
-  // Возвращается объект класса Lib, внутри которого хранятся выбранные элементы
-  // У этого объекта есть различные свойства и методы которые могут применяться к этим элементам
-  let selectP = g('p');
+  // При клике мигает
+  // $('.item').on('click', function () {
+  //   $(this).stop(true, true).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
+  //   $( this ).fadeOut( 300 ).fadeIn( 300 ).fadeOut( 300 ).fadeIn( 300 );
+  // });
 
-  console.log(g('p').html());
+  $('.item').on('contextmenu', function (e) {
+    // отключаем вызов контекстного меню, по нажатию на правую кнопку мыши
+    e.preventDefault();
+
+    // По очереди уменьшаем и высоту и прозрачность
+    // Сначала уменьшится высота потом прозрачность
+    // $(this)
+    //   .animate({
+    //     height: 100
+    //   }, 500)
+    //   .animate({
+    //     opacity: 0.5
+    //   }, 500);
+
+    // Одновременно уменьшем высоту и прозрачность
+    $(this).animate({
+      // height: '-=100px', // уменьшать будет при каждом клике
+      height: '100px',
+      opacity: 0.5
+    }, 500 /*, $.bez([.51,1.92,.43,-0.98])*/ );
+  });
 </script>
 
 </body>

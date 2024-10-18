@@ -94,3 +94,14 @@ JS:
       // или вместо CSS воспользоваться jQuery: $('.faq .answer:first').show()
       // answer.slideDown(400);
     });
+
+## Дата атрибуты
+Способ с дата атрибутами, если .ask и .answer лежат не рядом:
+
+    $( '.faq .ask' ).on( 'click', function() {
+      var id = $( this ).attr( 'data-open' );
+      // var id = $( this ).data( 'open' ); // аналог
+      $( '.faq .answer[ data-id=' + id + ']' ).slideToggle( 400 );
+    });
+
+У .ask data-open='1', у .answer data-id='1'.
